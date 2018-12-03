@@ -79,13 +79,16 @@ router.delete('/:id', needAuth, catchErrors(async (req, res, next) => {
 
 router.post('/', needAuth, catchErrors(async (req, res, next) => {
   const user = req.session.user;
+
   var contest = new Contest({
+    
     title: req.body.title,
     author: user._id,
     host: req.body.host,
     field: req.body.field,
     applicant: req.body.applicant,
-    receptionPeriod: req.body.receptionPeriodSchema.split("~").map(e => e.trim()),
+    startDate: new Date(req.body.startDate),
+    endDate: new Date(req.body.endDate),
     personInCharge: req.body.personInCharge,
     contact: req.body.contact,
     prize: req.body.prize,

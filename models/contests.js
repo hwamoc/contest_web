@@ -2,10 +2,7 @@ var mongoose = require('mongoose'),
   mongoosePaginate = require('mongoose-paginate'),
   Schema = mongoose.Schema;
 
-var receptionPeriodSchema = new Schema({
-  start: { type: Date, required: true },
-  end: { type: Date, required: true }
-});
+
 
 var schema = new Schema({
   author: { type: Schema.Types.ObjectId, ref: 'User' },
@@ -13,7 +10,8 @@ var schema = new Schema({
   host: { type: String, trim: true, required: true },
   field: { type: String, trim: true, required: true },
   applicant: { type: String, trim: true, required: true },
-  receptionPeriod: [receptionPeriodSchema],
+  startDate: { type: Date, required: true },
+  endDate: { type: Date, required: true },
   personInCharge: { type: String, trim: true, required: true },
   contact: { type: String, trim: true, required: true },
   prize: { type: String, trim: true, required: true },

@@ -1,0 +1,35 @@
+.form-group
+  label(for="title") Title *
+  input.form-control(type="text", name="title", placeholder="What's your Contest Title?", value=contest.title)
+.form-group
+  label(for="host") Host *
+  input.form-control(type="text", name="host", value=contest.host)
+.form-group
+  label(for="field") Field *
+  input.form-control(type="text", name="field", placeholder="Ideas, Marketing, Report, Contents, Design, Web, SW,..", value=contest.field)
+.form-group
+  label(for="applicant") Applicant *
+  input.form-control(type="text", name="applicant", placeholder="No restriction, Public, College student, Youth,...", value=contest.applicant)
+.form-group
+  label(for="startDate") Start Date *
+  input.form-control(type="date", name="startDate", value=contest.startDate)
+.form-group
+  label(for="endDate") End Date *
+  input.form-control(type="date", name="endDate", value=contest.endDate)
+.form-group
+  label(for="prize") Prize *
+  textarea.form-control(type="text", name="prize", placeholder="Over 50 million won, 50~30 million won, 30~10 million won, Internship, Full-time employee,...", value=question.prize)
+
+.form-group
+  label(for="content") Content *
+  textarea.form-control(type="text", name="content", value=question.content)
+.form-group
+  label(for="tags") Tags
+  input.form-control(type="text", name="tags", placeholder="tags separated by spaces", value=question.tags ? question.tags.join(" ") : "")
+
+.form-group
+  label(for="personInCharge") Person In Charge *
+  textarea.form-control(type="text", name="personInCharge", value=question.personInCharge)
+.form-group
+  label(for="contact") Contact *
+  input.form-control(type="text", name="contact", value=question.contact)
