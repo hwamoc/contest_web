@@ -1,7 +1,7 @@
 const express = require('express');
 const Contest = require('../models/contest');
 const User = require('../models/user'); 
-// const Answer = require('../models/answer'); 
+const Answer = require('../models/answer'); 
 const catchErrors = require('../lib/async-error');
 
 const router = express.Router();
@@ -109,17 +109,17 @@ router.post('/:id/answers', needAuth, catchErrors(async (req, res, next) => {
     return res.redirect('back');
   }
 
-  // var answer = new Answer({
-  //   author: user._id,
-  //   question: question._id,
-  //   content: req.body.content
-  // });
-  // await answer.save();
-  // question.numAnswers++;
-  // await question.save();
+  var answer = new Answer({
+    author: user._id,
+    question: question._id,
+    content: req.body.content
+  });
+  await answer.save();
+  question.numAnswers++;
+  await question.save();
 
-  // req.flash('success', 'Successfully answered');
-  // res.redirect(`/questions/${req.params.id}`);
+  req.flash('success', 'Successfully answered');
+  res.redirect(`/questions/${req.params.id}`);
 }));
 
 

@@ -18,18 +18,18 @@
   input.form-control(type="date", name="endDate", value=contest.endDate)
 .form-group
   label(for="prize") Prize *
-  textarea.form-control(type="text", name="prize", placeholder="Over 50 million won, 50~30 million won, 30~10 million won, Internship, Full-time employee,...", value=question.prize)
+  input.form-control(type="text", name="prize", placeholder="Over 50 million won, 50~30 million won, 30~10 million won, Internship, Full-time employee,...", value=contest.prize)
 
 .form-group
   label(for="content") Content *
-  textarea.form-control(type="text", name="content", value=question.content)
+  textarea.form-control(name="content", rows="5", width="100%")= contest.content
 .form-group
   label(for="tags") Tags
-  input.form-control(type="text", name="tags", placeholder="tags separated by spaces", value=question.tags ? question.tags.join(" ") : "")
+  input.form-control(type="text", name="tags", placeholder="tags separated by spaces", value=contest.tags ? contest.tags.join(" ") : "")
 
 .form-group
   label(for="personInCharge") Person In Charge *
-  textarea.form-control(type="text", name="personInCharge", value=question.personInCharge)
+  input.form-control(type="text", name="personInCharge", value=contest.personInCharge)
 .form-group
   label(for="contact") Contact *
-  input.form-control(type="text", name="contact", value=question.contact)
+  input.form-control(type="text", name="contact", value=contest.contact)
