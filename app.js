@@ -14,7 +14,7 @@ var passport = require('passport'); ////
 var index = require('./routes/index');
 var users = require('./routes/users');
 var contests = require('./routes/contests');
-// var questions = require('./routes/questions');
+var questions = require('./routes/questions');
 
 var passportConfig = require('./lib/passport-config'); /////
 
@@ -91,7 +91,7 @@ app.use(function(req, res, next) {
 app.use('/', index);
 app.use('/users', users);
 app.use('/contests', contests);
-// app.use('/questions', questions);
+app.use('/questions', questions);
 require('./routes/auth')(app, passport);
 
 // catch 404 and forward to error handler
