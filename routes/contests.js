@@ -163,25 +163,31 @@ router.post('/', needAuth, catchErrors(async (req, res, next) => {
 }));
 
 router.post('/:id', needAuth, catchErrors(async (req, res, next) => {
-  const user = req.user;
-  var contest = new Contest({
-    title: req.body.title,
-    author: user._id,
-    host: req.body.host,
-    field: req.body.field,
-    applicant: req.body.applicant,
-    startDate: req.body.startDate,
-    endDate: req.body.endDate,
-    personInCharge: req.body.personInCharge,
-    contact: req.body.contact,
-    prize: req.body.prize,
-    content: req.body.content,
-    tags: req.body.tags.split(" ").map(e => e.trim()),
-  });
-  await contest.save();
+  await Contest.findByIdAndUpdate({_id: req.params.id});
   req.flash('success', 'Successfully updated');
   res.redirect('/contests');
 }));
+
+// router.post('/:id', needAuth, catchErrors(async (req, res, next) => {
+//   const user = req.user;
+//   var contest = new Contest({
+//     title: req.body.title,
+//     author: user._id,
+//     host: req.body.host,
+//     field: req.body.field,
+//     applicant: req.body.applicant,
+//     startDate: req.body.startDate,
+//     endDate: req.body.endDate,
+//     personInCharge: req.body.personInCharge,
+//     contact: req.body.contact,
+//     prize: req.body.prize,
+//     content: req.body.content,
+//     tags: req.body.tags.split(" ").map(e => e.trim()),
+//   });
+//   await contest.save();
+//   req.flash('success', 'Successfully updated');
+//   res.redirect('/contests');
+// }));
 
 router.post('/:id/answers', needAuth, catchErrors(async (req, res, next) => {
   const user = req.user;
