@@ -1,8 +1,3 @@
-.content= contest.content
-.tags.badges
-  each tag in contest.tags
-    span.badge.badge-phill.badge-secondary= tag
-    | 
 .row
   .col-sm
     .numbers.
@@ -11,7 +6,27 @@
       #[span.number.num-views= contest.numReads] reads
   .col-sm
     .author
-      | asked on #{moment(contest.createdAt).format('YYYY-MM-DD')}
+      | posted on #{moment(contest.createdAt).format('YYYY-MM-DD')}
       if contest.author
         | 
         | by #[a(href=`/users/${contest.author.id}`)= contest.author.name] 
+br
+
+.row
+.col-sm
+.host= contest.host
+.field= contest.field
+.applicant= contest.applicant
+.startDate= contest.startDate
+.endDate= contest.endDate
+.personInCharge= contest.personInCharge
+.contact= contest.contact
+.prize= contest.prize
+.content= contest.content
+.tags.badges
+  each tag in contest.tags
+    span.badge.badge-phill.badge-secondary= tag
+    | 
+.row
+
+  
