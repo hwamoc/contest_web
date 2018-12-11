@@ -21,6 +21,8 @@ block content
           .contest
             a.title(href=`/contests/${contest.id}`)= contest.title
             include _contest
+            br
+            br
 
       +paginate(contests, '/contests', query)
 
