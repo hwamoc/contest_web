@@ -15,62 +15,6 @@ function needAuth(req, res, next) {
   }
 }
 
-function validateForm(form, options) {
-  var title = form.title || "";
-  var author = user._id || "";
-  var host = form.host || "";
-  var field = form.field || "";
-  var applicant = form.applicant || "";
-  var startDate = form.startDate || "";
-  var endDate = form.endDate || "";
-  var personInCharge = form.personInCharge || "";
-  var contact = form.contact || "";
-  var prize = form.prize || "";
-  var content = form.content || "";
-  var tags = form.tags.split(" ").map(e => e.trim()) || "";
-
-  title = title.trim();
-  content = content.trim();
-  // event_description = event_description.trim();
-  // organizer = organizer.trim();
-  // organizer_description = organizer_description.trim();
-
-  if (!title) {
-    return 'Title is required.';
-  }
-  if (!author) {
-    return 'Location is required.';
-  }
-  if (!host) {
-    return 'Start date is required.';
-  }
-  if(!field){
-    return 'Start time is required.';
-  }
-  if(!applicant) {
-    return 'Start time is required.';
-  }
-  if (!startDate) {
-    return 'End date is required.';
-  }
-  if(!endDate) {
-    return 'End time is required.';
-  }
-  if(!personInCharge) {
-    return 'End time is required.';
-  }
-  if (!contact) {
-    return 'Event description is required.';
-  }
-  if (!prize) {
-    return 'Organizer is required.';
-  }
-  if (!content) {
-    return 'Organizer description is required.';
-  }
-  return null;
-}
-
 /* GET contests listing. */
 router.get('/', catchErrors(async (req, res, next) => {
   const page = parseInt(req.query.page) || 1;
