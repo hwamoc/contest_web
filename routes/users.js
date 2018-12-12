@@ -11,6 +11,14 @@ function needAuth(req, res, next) {
     res.redirect('/signin');
   }
 }
+function isAdmin(req, res, next) {
+  if (req.isAuthenticated()) {
+      if (req.user.isAdmin == true) {
+          return next();
+      }
+  }
+res.redirect('/signin');
+}
 
 function validateForm(form, options) {
   var name = form.name || "";
@@ -42,7 +50,7 @@ function validateForm(form, options) {
 }
 
 /* GET users listing. */
-router.get('/', needAuth, catchErrors(async (req, res, next) => {
+router.get('/', needAuth, isAdmin, catchErrors(async (req, res, next) => {
   const users = await User.find({});
   res.render('users/index', {users: users});
 }));

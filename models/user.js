@@ -7,6 +7,7 @@ var schema = new Schema({
   name: {type: String, required: true, trim: true},
   email: {type: String, required: true, index: true, unique: true, trim: true},
   password: {type: String},
+  isAdmin: {type: Boolean, default: false},
   facebook: {id: String, token: String, photo: String},
   createdAt: {type: Date, default: Date.now}
 }, {
@@ -21,6 +22,7 @@ schema.methods.generateHash = function(password) {
 schema.methods.validatePassword = function(password) {
   return bcrypt.compare(password, this.password); // return Promise
 };
+
 
 var User = mongoose.model('User', schema);
 

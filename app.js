@@ -48,6 +48,7 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(bodyParser());
 
 // _method를 통해서 method를 변경할 수 있도록 함. PUT이나 DELETE를 사용할 수 있도록.
 app.use(methodOverride('_method', {methods: ['POST', 'GET']}));
@@ -84,6 +85,15 @@ passportConfig(passport);
 // pug의 local에 현재 사용자 정보와 flash 메시지를 전달하자.
 app.use(function(req, res, next) {
   res.locals.currentUser = req.user;  // passport는 req.user로 user정보 전달
+  res.locals.flashMessages = req.flash();
+  next();
+});
+app.use(function (req, res, next) {
+  if (req.isAuthenticated()) {
+      if (req.user.isAdmin == true) {
+        res.locals.currentAdmin = req.user;// passport는 req.user로 user정보 전달
+      }
+  }
   res.locals.flashMessages = req.flash();
   next();
 });

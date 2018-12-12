@@ -83,14 +83,14 @@ a:hover {
   font-size: 1rem;
   color: #bbb; }
 
-.contest {
+.question {
   line-height: 160%;
   margin-bottom: 2em; }
-  .contest .title {
+  .question .title {
     font-size: 1.3rem; }
-  .contest .content {
+  .question .content {
     color: #666; }
-  .contest .tags {
+  .question .tags {
     margin: 0.5em 0; }
 
 .author {
@@ -107,7 +107,7 @@ a:hover {
   font-weight: bold;
   color: #0f5ca6; }
 
-.contests .content {
+.questions .content {
   max-height: 5em;
   overflow: hidden;
   text-overflow: ellipsis; }
@@ -133,18 +133,18 @@ a:hover {
     margin-bottom: 0.5em;
     color: #888; }
 
-.contest-like-btn, .answer-like-btn {
+.question-like-btn, .answer-like-btn {
   cursor: pointer; }
-  .contest-like-btn .for-loading, .answer-like-btn .for-loading {
+  .question-like-btn .for-loading, .answer-like-btn .for-loading {
     display: none; }
-  .contest-like-btn.loading, .answer-like-btn.loading {
+  .question-like-btn.loading, .answer-like-btn.loading {
     filter: opacity(30%);
     cursor: wait; }
-    .contest-like-btn.loading > span, .answer-like-btn.loading > span {
+    .question-like-btn.loading > span, .answer-like-btn.loading > span {
       display: none; }
-    .contest-like-btn.loading .for-loading, .answer-like-btn.loading .for-loading {
+    .question-like-btn.loading .for-loading, .answer-like-btn.loading .for-loading {
       display: inline-block; }
-  .contest-like-btn.disabled, .answer-like-btn.disabled {
+  .question-like-btn.disabled, .answer-like-btn.disabled {
     color: #bbb;
     cursor: default; }
 
