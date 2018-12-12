@@ -9,14 +9,14 @@ var session = require('express-session');
 var methodOverride = require('method-override');
 var flash = require('connect-flash');
 var mongoose   = require('mongoose');
-var passport = require('passport'); ////
+var passport = require('passport');
 
 var index = require('./routes/index');
 var users = require('./routes/users');
-var contests = require('./routes/contests');
 var questions = require('./routes/questions');
+var contests = require('./routes/contests');
 
-var passportConfig = require('./lib/passport-config'); /////
+var passportConfig = require('./lib/passport-config');
 
 var app = express();
 
@@ -37,7 +37,6 @@ app.locals.querystring = require('querystring');
 mongoose.Promise = global.Promise; // ES6 Native Promise를 mongoose에서 사용한다.
 // const connStr = 'mongodb://localhost/test';
 // 아래는 mLab을 사용하는 경우의 예: 본인의 접속 String으로 바꾸세요.
-
 const connStr = 'mongodb://admin:admin1234@ds131814.mlab.com:31814/prov';
 mongoose.connect(connStr, {useMongoClient: true });
 mongoose.connection.on('error', console.error);
@@ -64,6 +63,7 @@ app.use(sassMiddleware({
 
 // session을 사용할 수 있도록.
 app.use(session({
+  name: 'mjoverflow',
   resave: true,
   saveUninitialized: true,
   secret: 'long-long-long-secret-string-1313513tefgwdsvbjkvasd'
@@ -91,9 +91,10 @@ app.use(function(req, res, next) {
 // Route
 app.use('/', index);
 app.use('/users', users);
-app.use('/contests', contests);
 app.use('/questions', questions);
+app.use('/contests', contests);
 require('./routes/auth')(app, passport);
+app.use('/api', require('./routes/api'));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
